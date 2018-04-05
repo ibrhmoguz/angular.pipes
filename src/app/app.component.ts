@@ -37,6 +37,13 @@ export class AppComponent {
     }
   ];
   filteredStatus = '';
+  statusFetched = false;
+  appStatus = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('stable');
+      this.statusFetched = true;
+    }, 2000);
+  });
 
   getStatusClasses(server: { instanceType: string, name: string, status: string, started: Date }) {
     return {
@@ -46,7 +53,7 @@ export class AppComponent {
     };
   }
 
-  onAddServer(){
+  onAddServer() {
     this.servers.push({
       instanceType: 'small',
       name: 'New Environment Server',

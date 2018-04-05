@@ -4,6 +4,9 @@
       <input type="text" class="form-control" [(ngModel)]="filteredStatus">
       <hr>
       <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+      <br> <br>
+      <h2 *ngIf="!statusFetched">Fetching status...</h2>
+      <h2 *ngIf="statusFetched">App Status : {{appStatus | async}}</h2>
       <ul class="list-group">
         <li 
           class="list-group-item" 
